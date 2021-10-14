@@ -1,0 +1,38 @@
+products = [
+    {   'codigo': 'P001', 
+        'nombre': 'MESA AUXILIAR MADERA',
+        'descripcion': 'Sin descripcion definidad.', 
+        'costo': 195000, 
+        'precio_venta': 300000,
+        'stock': 15,
+        'ubicacion': 'Bogota',
+        'estado':   'Disponible',
+        'imagenes': '',
+        'calificacion': 3,
+        'categoria': 'Dormitorio'
+    },
+    {   'codigo': 'P002', 
+        'nombre': 'MACETERO METAL Y VIDRIO',
+        'descripcion': 'Macetero de 41.50 cm de alto - 19.50 cm de ancho 19.50 cm de fondo', 
+        'costo': 189000, 
+        'precio_venta': 250000,
+        'stock': 150,
+        'ubicacion': 'Bogota',
+        'estado':   'Disponible',
+        'imagenes': '',
+        'calificacion': 3,
+        'categoria': 'Dormitorio'
+    },
+    {   'codigo': 'P003', 
+        'nombre': 'MESA DE MADERA BISELADA',
+        'descripcion': 'Sin descripcion definidad.',  
+        'costo': 320000, 
+        'precio_venta': 410000,
+        'stock': 35,
+        'ubicacion': 'Bogota',
+        'estado':   'Disponible',
+        'imagenes': '',
+        'calificacion': 3,
+        'categoria': 'Dormitorio'
+    }
+]
