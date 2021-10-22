@@ -1,5 +1,7 @@
-from flask import Flask, jsonify, request;
+from flask import Flask, jsonify, request
+import UserController
 
+from datetime import datetime
 from User import users
 from Product import products
 app = Flask(__name__)
@@ -7,23 +9,44 @@ app = Flask(__name__)
 #Consultar todos los usuarios
 @app.route('/api/users')
 def getUsers():
-        return jsonify(users)
+        users = []
+        users = UserController.GetUsers()
+        try:
+                if (users):
+                        return jsonify({
+                                'status': 'SUCCESS',
+                                'code': 200,
+                                'users': users
+                        })
+                else :
+                        return jsonify({
+                                'status': 'WARNING',
+                                'code': 202,
+                                'message': 'No existen datos en el sistema'
+                        })
+        except Exception as ex:
+                return jsonify({
+                        'status':'ERROR',
+                        'code': 404,
+                        'message': 'Error al registrar un usuario',
+                        'define_error': ex.args[0]
+                })
 
 #Agregar un nuevo usuario
 @app.route('/api/user/add', methods = ['POST'])
 def addUser():
         try:
                 newUser = {
-                        'id': '00U',
-                        'names': request.json['names'],
-                        'surnames': request.json['surnames'],
+                        'codigo': request.json['codigo'],
+                        'user': request.json['user'],
                         'fecha_nacimiento': request.json['fecha_nacimiento'],
                         'email': request.json['email'],
                         'password': request.json['password'],
                         'estado': 'A',
                         'role': 'USER'
                         }
-                users.append(newUser)
+                UserController.Register(newUser['codigo'],newUser['user'],
+                                        newUser['email'], newUser['password'], newUser['estado'], newUser['role'], datetime.today(), datetime.today())
                 return jsonify({
                         'status':'SUCCESS',
                         'code': 200,
